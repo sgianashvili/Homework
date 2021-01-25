@@ -2,6 +2,7 @@
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.conditions.Visible;
 import org.jsoup.select.Selector;
 import org.junit.Test;
@@ -15,6 +16,8 @@ import static com.codeborne.selenide.Selenide.sleep;
 
 
 public class Homework5 {
+    //Faker faker  = new Faker();
+
     @Test
     public void test() throws InterruptedException {
 
@@ -23,6 +26,8 @@ public class Homework5 {
         Configuration.baseUrl = "https://www.facebook.com/";
         System.setProperty("webdriver.chrome.driver", "chrome/chromedriver.exe");
         Configuration.startMaximized = true;
+        //String test = faker.number().digits(count:9);
+
 
         Selenide.open("https://www.facebook.com/");
 
@@ -38,12 +43,22 @@ public class Homework5 {
         $("#month").selectOption("Nov");
         $("#day").selectOptionContainingText("16");
         $("#year").selectOptionContainingText("1992");
+       // $(By.name("Name")).setValue("sex");
+        //$(by("Name", "sex")).lastChild().click();
+       // $(By.name("sex")).setValue("1");
+        //$("#_5k_2_5dba").selectOption("sex");
+       // $("#u_2_2").selectRadio("1");
+       // $(By.name("gender")).selectRadio("sex");
 
-        $(by("data-name", "gender_wrapper")).lastChild().click();
+        //$(By.name("u_2_2")).lastChild().click();
+
+       $(by("data-type", "radio")).lastChild().click();
+
+      //  $(by("data-name", "gender_wrapper")).lastChild().click();
         $(byName("preferred_pronoun")).selectOptionContainingText("She: \"Wish her a happy birthday!\"");
         $(byName("custom_gender")).shouldBe(Condition.visible).setValue("HelloWorld");
 
-        $(by("data-name", "gender_wrapper")).lastChild().click();
+        $(byName("websubmit")).click();
         sleep(3000);
     }
 
